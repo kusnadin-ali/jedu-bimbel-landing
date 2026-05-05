@@ -56,7 +56,7 @@ export function Hero() {
               <Button
                 as="a"
                 href="#daftar"
-                className="h-12 bg-brand-green text-white font-medium rounded-full px-8 shadow-md hover:-translate-y-1 transition-transform"
+                className="h-12 flex items-center justify-center bg-brand-green text-white font-medium rounded-full px-8 shadow-md hover:-translate-y-1 transition-transform"
               >
                 Mulai Belajar
               </Button>
@@ -64,7 +64,7 @@ export function Hero() {
                 as="a"
                 href="#program"
                 variant="bordered"
-                className="h-12 border border-brand-green text-brand-green font-medium rounded-full px-8 hover:bg-brand-green-xlt transition-colors"
+                className="h-12 flex items-center justify-center border border-brand-green text-brand-green font-medium rounded-full px-8 hover:bg-brand-green-xlt transition-colors"
               >
                 Jadwal & Program
               </Button>
