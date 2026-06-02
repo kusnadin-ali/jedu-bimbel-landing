@@ -12,7 +12,7 @@ export function Navbar() {
     { label: "Beranda", href: "#" },
     { label: "Program", href: "#program" },
     { label: "Keunggulan", href: "#keunggulan" },
-    { label: "Jadwal", href: "#jadwal" },
+    // { label: "Jadwal", href: "#jadwal" },
   ];
 
   return (

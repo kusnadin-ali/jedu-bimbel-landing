@@ -4,7 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Programs } from "@/components/sections/Programs";
 import { CambridgeSpotlight } from "@/components/sections/CambridgeSpotlight";
 import { WhyUs } from "@/components/sections/WhyUs";
-import { Schedule } from "@/components/sections/Schedule";
+// import { Schedule } from "@/components/sections/Schedule";
 import { CtaForm } from "@/components/sections/CtaForm";
 
 const jsonLd = {
@@ -63,7 +63,7 @@ export default function Home() {
         <Programs />
         <CambridgeSpotlight />
         <WhyUs />
-        <Schedule />
+        {/* <Schedule /> */}
         <CtaForm />
       </main>
       <Footer />

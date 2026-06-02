@@ -23,7 +23,7 @@ export function Footer() {
             <h4 className="font-serif font-bold text-lg mb-2">Navigasi</h4>
             <Link href="#program" className="text-brand-ink-soft hover:text-brand-amber transition-colors text-sm">Program</Link>
             <Link href="#keunggulan" className="text-brand-ink-soft hover:text-brand-amber transition-colors text-sm">Keunggulan</Link>
-            <Link href="#jadwal" className="text-brand-ink-soft hover:text-brand-amber transition-colors text-sm">Jadwal</Link>
+            {/* <Link href="#jadwal" className="text-brand-ink-soft hover:text-brand-amber transition-colors text-sm">Jadwal</Link> */}
           </div>
         </div>
         
