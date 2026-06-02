@@ -1,13 +1,13 @@
 "use client";
 
-import { CheckCircle2, Star } from "lucide-react";
+import { CheckCircle2, Star, ClipboardList } from "lucide-react";
 
 export function Programs() {
   const programs = [
     {
       id: "calistung",
       title: "Calistung",
-      price: "Rp 150.000",
+      price: "Rp 200.000",
       level: "PAUD & SD Awal",
       description: "Pondasi membaca, menulis, dan berhitung dengan metode bertahap menggunakan buku panduan khusus dan lembar kerja.",
       subjects: ["Membaca", "Menulis", "Berhitung"],
@@ -16,7 +16,7 @@ export function Programs() {
     {
       id: "paket-sd",
       title: "Paket SD",
-      price: "Rp 200.000",
+      price: "Rp 250.000",
       level: "SD",
       description: "Tiga mata pelajaran inti dalam satu paket terpadu sesuai kurikulum nasional untuk jenjang Sekolah Dasar.",
       subjects: ["Matematika", "B. Indonesia", "IPAS"],
@@ -25,7 +25,7 @@ export function Programs() {
     {
       id: "cambridge-primary",
       title: "Cambridge Primary",
-      price: "Rp 250.000",
+      price: "Rp 300.000",
       level: "SD (Cambridge)",
       description: "Pendampingan belajar berbasis kurikulum Cambridge International untuk tingkat Primary.",
       subjects: ["Math", "B. Indonesia", "Science"],
@@ -133,10 +133,11 @@ export function Programs() {
                   {prog.title}
                 </h3>
 
-                <div className={`text-3xl font-black mb-1 ${t.price}`}>
-                  {prog.price}
+                <div className={`flex items-baseline gap-1.5 mb-1`}>
+                  <span className={`text-3xl font-black ${t.price}`}>{prog.price}</span>
+                  <span className={`text-xs font-medium ${t.priceSub}`}>/ bulan</span>
                 </div>
-                <p className={`text-xs mb-4 ${t.priceSub}`}>/ bulan &middot; 2&times; pertemuan/minggu</p>
+                <p className={`text-xs mb-4 ${t.priceSub}`}>2&times; pertemuan/minggu</p>
 
                 <p className={`text-sm leading-relaxed mb-5 ${t.desc}`}>
                   {prog.description}
@@ -158,7 +159,22 @@ export function Programs() {
           })}
         </div>
 
-        <p className="text-center text-xs text-brand-ink-soft mt-8">
+        <div className="mt-10 flex justify-center">
+          <div className="inline-flex items-start gap-4 bg-white border border-brand-green/20 rounded-2xl px-6 py-5 shadow-sm max-w-xl w-full">
+            <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-amber/10 flex items-center justify-center mt-0.5">
+              <ClipboardList size={20} className="text-brand-amber" />
+            </div>
+            <div>
+              <p className="font-semibold text-brand-ink text-sm mb-0.5">Biaya Pendaftaran</p>
+              <p className="text-brand-green font-black text-2xl leading-tight">Rp 150.000</p>
+              <p className="text-brand-ink-soft text-xs mt-1">
+                Dibayarkan sekali di awal pendaftaran &mdash; <strong className="text-brand-ink font-semibold">tidak termasuk biaya bulanan</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-center text-xs text-brand-ink-soft mt-6">
           * Tersedia kelas khusus Matematika untuk SD &amp; SMP. Hubungi kami untuk konsultasi lebih lanjut.
         </p>
       </div>
