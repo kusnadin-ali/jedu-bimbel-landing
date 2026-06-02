@@ -5,7 +5,7 @@ import { Users, GraduationCap, Globe2, Focus, HeartHandshake } from "lucide-reac
 export function WhyUs() {
   const stats = [
     { label: "Murid Aktif", value: "28" },
-    { label: "Kelas", value: "Kecil" },
+    { label: "Siswa/Kelas", value: "8–10" },
     { label: "Jenjang", value: "SD-SMP" },
     { label: "Standar", value: "Global" },
   ];

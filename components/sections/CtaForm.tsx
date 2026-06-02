@@ -102,9 +102,10 @@ export function CtaForm() {
                     onChange={(e) => handleChange("grade", e.target.value)}
                     required
                   >
-                    <option value="" disabled className="text-brand-ink">Pilih kelas</option>
-                    <option value="SD Kelas 1-3" className="text-brand-ink">SD (Kelas 1 - 3)</option>
-                    <option value="SD Kelas 4-6" className="text-brand-ink">SD (Kelas 4 - 6)</option>
+                    <option value="" disabled className="text-brand-ink">Pilih jenjang</option>
+                    <option value="PAUD / SD Awal" className="text-brand-ink">PAUD / SD Awal (Calistung)</option>
+                    <option value="SD Kelas 1-3" className="text-brand-ink">SD (Kelas 1 – 3)</option>
+                    <option value="SD Kelas 4-6" className="text-brand-ink">SD (Kelas 4 – 6)</option>
                     <option value="SMP" className="text-brand-ink">SMP</option>
                   </select>
                 </div>
@@ -120,9 +121,11 @@ export function CtaForm() {
                     required
                   >
                     <option value="" disabled className="text-brand-ink">Pilih program</option>
-                    <option value="Paket Reguler (Math, IPA, B.Indo)" className="text-brand-ink">Paket Reguler (Math, IPA, B.Indo)</option>
-                    <option value="Bahasa Inggris" className="text-brand-ink">Bahasa Inggris</option>
-                    <option value="Calistung" className="text-brand-ink">Calistung (PAUD & SD Awal)</option>
+                    <option value="Calistung (Rp 150.000)" className="text-brand-ink">Calistung – Rp 150.000/bln</option>
+                    <option value="Paket SD (Rp 200.000)" className="text-brand-ink">Paket SD – Rp 200.000/bln</option>
+                    <option value="Paket Cambridge Primary (Rp 250.000)" className="text-brand-ink">Cambridge Primary – Rp 250.000/bln</option>
+                    <option value="Paket SMP (Rp 300.000)" className="text-brand-ink">Paket SMP – Rp 300.000/bln</option>
+                    <option value="Paket Cambridge Junior (Rp 350.000)" className="text-brand-ink">Cambridge Junior – Rp 350.000/bln</option>
                   </select>
                 </div>
 

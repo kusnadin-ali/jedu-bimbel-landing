@@ -1,41 +1,94 @@
 "use client";
 
-import { BookMarked, CheckCircle2, Languages, Sparkles, PencilLine } from "lucide-react";
+import { CheckCircle2, Star } from "lucide-react";
 
 export function Programs() {
   const programs = [
     {
-      id: "paket-reguler",
-      title: "Paket Reguler (3-in-1)",
-      description: "Paket wajib yang dirancang untuk penguasaan materi sekolah secara menyeluruh. Ketiga mata pelajaran ini merupakan satu kesatuan paket.",
-      icon: <Sparkles size={48} className="text-brand-amber" />,
-      level: "SD & SMP",
-      subjects: ["Matematika", "Ilmu Pengetahuan Alam", "Bahasa Indonesia"],
-      tags: ["Kurikulum Nasional", "Cambridge Math & Science", "Literasi"],
-      featured: true,
-      span2: true,
-    },
-    {
-      id: "bahasa-inggris",
-      title: "Bahasa Inggris",
-      description: "Program pengembangan kemampuan bahasa Inggris (Speaking, Listening, Reading, Writing) dengan standar kurikulum global.",
-      icon: <Languages size={48} className="text-brand-green" />,
-      level: "SD & SMP",
-      tags: ["Cambridge English", "Conversation", "Grammar"],
-      featured: false,
-      span2: false,
-    },
-    {
       id: "calistung",
       title: "Calistung",
-      description: "Pondasi membaca, menulis, dan berhitung dengan metode menyenangkan dan interaktif untuk persiapan sekolah.",
-      icon: <PencilLine size={48} className="text-brand-green" />,
+      price: "Rp 150.000",
       level: "PAUD & SD Awal",
-      tags: ["Membaca", "Menulis", "Logika Dasar"],
-      featured: false,
-      span2: false,
+      description: "Pondasi membaca, menulis, dan berhitung dengan metode bertahap menggunakan buku panduan khusus dan lembar kerja.",
+      subjects: ["Membaca", "Menulis", "Berhitung"],
+      theme: "white" as const,
+    },
+    {
+      id: "paket-sd",
+      title: "Paket SD",
+      price: "Rp 200.000",
+      level: "SD",
+      description: "Tiga mata pelajaran inti dalam satu paket terpadu sesuai kurikulum nasional untuk jenjang Sekolah Dasar.",
+      subjects: ["Matematika", "B. Indonesia", "IPAS"],
+      theme: "green" as const,
+    },
+    {
+      id: "cambridge-primary",
+      title: "Cambridge Primary",
+      price: "Rp 250.000",
+      level: "SD (Cambridge)",
+      description: "Pendampingan belajar berbasis kurikulum Cambridge International untuk tingkat Primary.",
+      subjects: ["Math", "B. Indonesia", "Science"],
+      theme: "dark" as const,
+    },
+    {
+      id: "paket-smp",
+      title: "Paket SMP",
+      price: "Rp 300.000",
+      level: "SMP",
+      description: "Tiga mata pelajaran inti dalam satu paket terpadu sesuai kurikulum nasional untuk jenjang SMP.",
+      subjects: ["Matematika", "B. Indonesia", "IPA"],
+      theme: "green" as const,
+    },
+    {
+      id: "cambridge-junior",
+      title: "Cambridge Junior",
+      price: "Rp 350.000",
+      level: "SMP (Cambridge)",
+      description: "Pendampingan belajar berbasis kurikulum Cambridge International untuk tingkat Junior.",
+      subjects: ["Math", "B. Indonesia", "Science"],
+      theme: "dark" as const,
     },
   ];
+
+  const themeMap = {
+    white: {
+      card: "bg-white",
+      badge: "bg-brand-green-xlt text-brand-green",
+      title: "text-brand-ink",
+      price: "text-brand-green",
+      priceSub: "text-brand-ink-soft",
+      desc: "text-brand-ink-soft",
+      subjectBg: "bg-brand-off",
+      subjectText: "text-brand-ink",
+      check: "text-brand-green",
+      isCambridge: false,
+    },
+    green: {
+      card: "bg-brand-green",
+      badge: "bg-white/20 text-white",
+      title: "text-white",
+      price: "text-brand-amber",
+      priceSub: "text-white/60",
+      desc: "text-white/80",
+      subjectBg: "bg-white/10",
+      subjectText: "text-white",
+      check: "text-brand-amber",
+      isCambridge: false,
+    },
+    dark: {
+      card: "bg-brand-ink",
+      badge: "bg-white/10 text-white/80",
+      title: "text-white",
+      price: "text-brand-amber",
+      priceSub: "text-white/50",
+      desc: "text-white/70",
+      subjectBg: "bg-white/10",
+      subjectText: "text-white",
+      check: "text-brand-amber",
+      isCambridge: true,
+    },
+  };
 
   return (
     <section id="program" className="py-20 bg-brand-off">
@@ -47,78 +100,67 @@ export function Programs() {
             Pilihan Program <em className="text-brand-green-mid">Terbaik</em>
           </h2>
           <p className="text-brand-ink-soft max-w-2xl mx-auto">
-            Kami menawarkan program yang fokus pada penguasaan konsep mendalam sesuai dengan kebutuhan perkembangan anak.
+            Semua program dilaksanakan{" "}
+            <strong className="font-semibold text-brand-ink">2 kali pertemuan per minggu</strong>{" "}
+            dalam kelompok kecil 8–10 siswa per kelas.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {programs.map((prog) => (
-            <div
-              key={prog.id}
-              className={`p-6 md:p-8 rounded-3xl border-none shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex flex-col ${prog.featured ? "bg-brand-green text-white lg:col-span-2" : "bg-white"
-                }`}
-            >
-              <div className="flex justify-between items-start mb-6">
-                <div className={`p-4 rounded-2xl ${prog.featured ? "bg-white/10" : "bg-brand-green-xlt"}`}>
-                  {prog.icon}
-                </div>
-                <span
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${prog.featured ? "bg-brand-amber text-brand-ink" : "bg-brand-green-xlt text-brand-green"
-                    }`}
-                >
-                  {prog.featured ? "Paling Populer" : "Mandiri"}
-                </span>
-              </div>
-
-              <div className="flex-grow">
-                <h3 className={`font-serif font-bold text-2xl mb-3 ${prog.featured ? "text-white" : "text-brand-ink"}`}>
-                  {prog.title}
-                </h3>
-                <p className={`text-sm md:text-base mb-6 leading-relaxed ${prog.featured ? "text-white/90" : "text-brand-ink-soft"}`}>
-                  {prog.description}
-                </p>
-
-                {prog.subjects && (
-                  <div className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-3">
-                    {prog.subjects.map((sub) => (
-                      <div key={sub} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20">
-                        <CheckCircle2 size={18} className="text-brand-amber shrink-0" />
-                        <span className="text-xs font-bold text-white">{sub}</span>
-                      </div>
-                    ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {programs.map((prog) => {
+            const t = themeMap[prog.theme];
+            return (
+              <div
+                key={prog.id}
+                className={`relative p-6 rounded-3xl flex flex-col shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${t.card}`}
+              >
+                {t.isCambridge && (
+                  <div className="absolute top-5 right-5">
+                    <span className="flex items-center gap-1 bg-brand-amber text-brand-ink text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                      <Star size={9} fill="currentColor" />
+                      Cambridge
+                    </span>
                   </div>
                 )}
 
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {prog.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className={`text-xs px-3 py-1 rounded-full border ${prog.featured ? "border-white/30 text-white/90" : "border-brand-off text-brand-ink-soft"
-                        }`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-6 mt-auto border-t border-dashed border-opacity-20 border-current flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <BookMarked size={18} className={prog.featured ? "text-brand-amber" : "text-brand-green"} />
-                  <span className={`text-sm font-bold ${prog.featured ? "text-white" : "text-brand-ink"}`}>
+                <div className="mb-4">
+                  <span className={`text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full ${t.badge}`}>
                     {prog.level}
                   </span>
                 </div>
-                {prog.featured && (
-                  <span className="text-[10px] font-bold text-brand-amber uppercase tracking-widest bg-brand-ink/30 px-2 py-1 rounded">
-                    Satu Paket
-                  </span>
-                )}
+
+                <h3 className={`font-serif font-bold text-2xl mb-1 ${t.title}`}>
+                  {prog.title}
+                </h3>
+
+                <div className={`text-3xl font-black mb-1 ${t.price}`}>
+                  {prog.price}
+                </div>
+                <p className={`text-xs mb-4 ${t.priceSub}`}>/ bulan &middot; 2&times; pertemuan/minggu</p>
+
+                <p className={`text-sm leading-relaxed mb-5 ${t.desc}`}>
+                  {prog.description}
+                </p>
+
+                <div className="mt-auto flex flex-col gap-2">
+                  {prog.subjects.map((sub) => (
+                    <div
+                      key={sub}
+                      className={`flex items-center gap-2 rounded-xl px-3 py-2 ${t.subjectBg}`}
+                    >
+                      <CheckCircle2 size={15} className={`${t.check} shrink-0`} />
+                      <span className={`text-sm font-medium ${t.subjectText}`}>{sub}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
+        <p className="text-center text-xs text-brand-ink-soft mt-8">
+          * Tersedia kelas khusus Matematika untuk SD &amp; SMP. Hubungi kami untuk konsultasi lebih lanjut.
+        </p>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Users, BookOpen, Globe2, Sparkles, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import { Users, BookOpen, Globe2, Sparkles, ChevronLeft, ChevronRight, MapPin, CalendarCheck } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import { useState, useEffect, useCallback } from "react";
@@ -169,8 +169,8 @@ export function Hero() {
               <BookOpen size={20} />
             </div>
             <div>
-              <p className="font-bold text-brand-ink">SD & SMP</p>
-              <p className="text-xs text-brand-ink-soft">Jenjang</p>
+              <p className="font-bold text-brand-ink">8–10 Siswa</p>
+              <p className="text-xs text-brand-ink-soft">per Kelas</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -184,6 +184,15 @@ export function Hero() {
           </div>
           <div className="flex items-center gap-2">
             <div className="bg-brand-amber-lt p-2 rounded-lg text-brand-amber">
+              <CalendarCheck size={20} />
+            </div>
+            <div>
+              <p className="font-bold text-brand-ink">Ags 2024</p>
+              <p className="text-xs text-brand-ink-soft">Berdiri Sejak</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="bg-brand-green-xlt p-2 rounded-lg text-brand-green">
               <MapPin size={20} />
             </div>
             <div>
