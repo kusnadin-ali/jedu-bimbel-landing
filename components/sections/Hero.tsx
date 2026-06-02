@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Users, BookOpen, Globe2, Sparkles, ChevronLeft, ChevronRight, MapPin, CalendarCheck } from "lucide-react";
-import Link from "next/link";
+import { Users, BookOpen, Globe2, Sparkles, MapPin, CalendarCheck } from "lucide-react";
 import { Button } from "@nextui-org/react";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -17,10 +16,6 @@ export function Hero() {
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
-  }, [images.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   }, [images.length]);
 
   useEffect(() => {
@@ -71,21 +66,18 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Column - Visual Gallery */}
+          {/* Right Column - Mosaic Gallery */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="relative hidden md:block"
           >
-            {/* Decorative background circle */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-brand-green/10 rounded-full animate-[spin_24s_linear_infinite] -z-10"></div>
-
             {/* Floating Badge */}
             <motion.div
-              animate={{ y: [-10, 10, -10] }}
+              animate={{ y: [-8, 8, -8] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-4 -top-4 bg-brand-white p-3 rounded-xl shadow-lg border border-brand-off z-20"
+              className="absolute -right-2 -top-4 bg-white p-3 rounded-xl shadow-lg border border-brand-off z-20"
             >
               <div className="flex items-center gap-2">
                 <div className="bg-brand-amber p-1.5 rounded-md text-white">
@@ -98,57 +90,87 @@ export function Hero() {
               </div>
             </motion.div>
 
-            <div className="w-full max-w-[500px] mx-auto group">
-              <div className="relative aspect-[4/3] bg-white p-2 rounded-2xl shadow-2xl shadow-brand-green/10 overflow-hidden">
-                {/* Images */}
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-brand-off">
+            {/* Mosaic Grid */}
+            <div className="grid grid-cols-[2fr_1fr] gap-3 h-[380px]">
+
+              {/* Main large photo */}
+              <div className="relative rounded-2xl overflow-hidden bg-brand-off shadow-xl shadow-brand-green/10">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`main-${currentIndex}`}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={images[currentIndex]}
+                      alt={`Kegiatan Jedu Bimbel ${currentIndex + 1}`}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    {/* subtle gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/20 to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Dot indicators on main photo */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                  {images.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentIndex(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? "bg-brand-amber w-5" : "bg-white/60 w-1.5"}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Two small photos stacked */}
+              <div className="flex flex-col gap-3">
+                <div className="relative flex-1 rounded-2xl overflow-hidden bg-brand-off shadow-md">
                   <AnimatePresence mode="wait">
                     <motion.div
-                      key={currentIndex}
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -50 }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      key={`sm1-${currentIndex}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.5, delay: 0.1, ease: "easeInOut" }}
                       className="absolute inset-0"
                     >
                       <Image
-                        src={images[currentIndex]}
-                        alt={`Gallery Jedu Bimbel ${currentIndex + 1}`}
+                        src={images[(currentIndex + 1) % images.length]}
+                        alt={`Kegiatan Jedu Bimbel ${(currentIndex + 1) % images.length + 1}`}
                         fill
                         className="object-cover"
-                        priority
                       />
                     </motion.div>
                   </AnimatePresence>
+                </div>
 
-                  {/* Navigation Arrows */}
-                  <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                    <button
-                      onClick={prevSlide}
-                      className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-brand-green shadow-md hover:bg-white transition-colors"
+                <div className="relative flex-1 rounded-2xl overflow-hidden bg-brand-off shadow-md">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`sm2-${currentIndex}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.5, delay: 0.2, ease: "easeInOut" }}
+                      className="absolute inset-0"
                     >
-                      <ChevronLeft size={24} />
-                    </button>
-                    <button
-                      onClick={nextSlide}
-                      className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-brand-green shadow-md hover:bg-white transition-colors"
-                    >
-                      <ChevronRight size={24} />
-                    </button>
-                  </div>
-
-                  {/* Indicators */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                    {images.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? "bg-brand-amber w-4" : "bg-white/50"}`}
+                      <Image
+                        src={images[(currentIndex + 2) % images.length]}
+                        alt={`Kegiatan Jedu Bimbel ${(currentIndex + 2) % images.length + 1}`}
+                        fill
+                        className="object-cover"
                       />
-                    ))}
-                  </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
+
             </div>
           </motion.div>
         </div>
